@@ -1,0 +1,370 @@
+* {
+    /* universal selector -- Applies styles to every element on the page.*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    /* ➡️ ensures that the element (often body, main, or a container) will always be at least as tall as the 
+            screen, even if there’s not enough content to fill it. */
+    /* 🧠 Real-World Use:
+            Used to create full-screen sections, like a hero banner or a layout that pushes the footer to the bottom, 
+            even when content is short. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    /* overflow:hidden = It hides any content that overflows (goes outside) the boundaries of the <body> element. */
+    /* 🧠 Real-World Use in This Context:
+            It’s often used when you want a clean layout with no accidental scrollbars, especially in fullscreen 
+            designs (like hero sections or centered landing pages).
+            With display: flex and justify-content: center, you're already centering things vertically, 
+            so overflow: hidden; ensures no stray content pushes things out of place or creates unexpected scroll.
+            ⚠️ Caution:
+            Be careful—this also means you won’t be able to scroll to see hidden content, so only use this when you're sure 
+            nothing important will overflow. */
+}
+
+/* =============ABOUT-TITLE============= */
+/* Right now, .about-title is positioned relative to the <html> or <body> (probably the entire page). */
+.about-title {
+    font-size: 5.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02rem;
+    /* letter-spacing sets the horizontal spacing between characters in the text.
+        -0.02rem means reduce spacing by 0.02 rem (very small).
+        rem stands for “root em”, a scalable unit based on the root font size (1rem = default 16px in most browsers). */
+    position: absolute;
+    /* Removes the element from the normal document flow and positions it relative to the nearest positioned ancestor. */
+    /* Perfect for overlaying text, like a title placed on top of an image, banner, or centered section—independent 
+    of surrounding layout. */
+    top: 45px;
+    /* What it does:
+        Positions the element 45 pixels down from the top of its containing block (usually a parent with position: relative).
+        currently in this context = initial containing block (basically the entire page).
+        Why it's used:
+        To give the title space from the top edge—like padding but for absolutely positioned elements. */
+    left: 50%;
+    /* What it does:
+        Places the left edge of the element at 50% of the width of the container (center horizontally).
+        But:This alone doesn't fully center the element, because it aligns the left edge, not the whole element. */
+    transform: translateX(-50%);
+    /* What it does:
+        Shifts the element left by 50% of its own width, effectively centering it horizontally.
+        Why it’s needed:
+        When used with left: 50%, it perfectly centers the element regardless of its own width. */
+    pointer-events: none;
+    /* What it does:
+        Makes the element non-interactive—it won’t respond to clicks, hovers, or any mouse events.
+        Why it's used:
+        Usually for decorative or text elements that should not block interaction with elements behind them (e.g., buttons, images). */
+    white-space: nowrap;
+    /* 1️⃣ white-space: nowrap;
+        ✅ What it does:
+        Prevents the text from wrapping to a new line, no matter how long it is.
+        🔍 Why it's used:
+        Ensures the title stays on a single line, useful for stylized headings.
+        Helps maintain control over gradient text effects and center alignment. */
+    font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+    background: linear-gradient(to bottom, #033d56 30%, rgb(255 255 255 / 0%) 76%);
+    /* ✅ What it does:
+    Applies a vertical gradient background to the text area.
+    🔍 Breakdown:
+    linear-gradient(to bottom, ...): top to bottom gradient.
+    rgb () 30%: a semi-transparent [color]at 30% down.
+    rgb (255 255 255 / 0%) 76%: fully transparent [color] by 76%.
+    💡 Creates a subtle fade-out effect from color to invisible — ideal for modern hero headlines. */
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* ✅ What they do:
+    They clip the background to only show inside the text characters.
+    🔍 Why both?
+        -webkit-background-clip: text; is for WebKit browsers (like Chrome and Safari).
+        background-clip: text; is the standard version.
+    ✨ This is the key to the gradient-text effect — the gradient only appears inside the letters. */
+    color: transparent;
+    /* ✅ What it does:
+    Makes the actual text invisible.
+    🔍 Why it's used:
+    Since the gradient is now “filling” the text via background-clip, you don’t want the original font color to show.
+    color: transparent; lets the gradient shine through the text outlines.
+    🎨 The Big Picture: 
+        Together, these lines turn your .about-title into a beautiful gradient-filled, non-wrapping
+        fully centered heading that looks ultra-modern and professional. */
+}
+
+/* ======CAROUSEL CONTAINER============ */
+.carousel-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 450px;
+    position: relative;
+    perspective: 1000px;
+    margin-top: 80px;
+}
+
+/* ======CAROUSEL TRACK================= */
+.carousel-track {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ===========IMAGE-CARD=============== */
+.card {
+    position: absolute;
+    margin-top: 200px;
+    width: 680px;
+    height: 780px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    /* Hides anything that sticks out, including oversized images. */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Makes all changes (like movement or scaling) smooth and animated. */
+    cursor: pointer;
+    /* 	Makes it clear it’s clickable (UX bonus). */
+}
+
+/* 🖼 Inside: .image-card img */
+.card img {
+    width: 100%;
+    height: 100%;
+    /* Fills the entire card with the image. */
+    object-fit: cover;
+    /* 	Ensures the image fills the box without distortion, cropping if needed. */
+    transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Smooth transitions for things like hover effects or grayscale filters. */
+}
+
+/* ============Center Card======= */
+.card.center img {
+    filter: none;
+    /* The main, focused card has no filters (fully colored, full opacity).
+Usually has no transform — it's front and center. */
+}
+
+/* ============🎯 Card Positions: .left-1, .left-2======= */
+.card.left-2 {
+    z-index: 1;
+    transform: translateX(-400px) scale(0.8) translateZ(-300px);
+    /* 	Pushes the card to the left, shrinks it (scale), 
+    and sends it deeper (translateZ). */
+    opacity: 0.7;
+    /* Fades it slightly to show it's in the background. */
+
+}
+
+.card.left-2 img {
+    filter: grayscale(100%);
+    /* 	Desaturates the image to reinforce it's not the main focus. */
+}
+
+/* ========.left-1 (closer to center than left-2)==== */
+.card.left-1 {
+    z-index: 5;
+    transform: translateX(-200px) scale(0.9) translateZ(-100px);
+    opacity: 0.9;
+    /* Difference from .left-2
+        Less faded and bigger (closer to the user).
+        Higher z-index, meaning it sits on top of .left-2.
+        Still not the main (centered) image. */
+}
+
+.card.left-1 img {
+    filter: grayscale(100%);
+}
+
+.card.right-1 {
+    z-index: 5;
+    transform: translateX(200px) scale(0.9) translateZ(-100px);
+    opacity: 0.9;
+}
+
+.card.right-1 img {
+    filter: grayscale(100%);
+}
+
+.card.right-2 {
+    z-index: 1;
+    transform: translateX(400px) scale(0.8) translateZ(-300px);
+    opacity: 0.7;
+}
+
+.card.right-2 img {
+    filter: grayscale(100%);
+}
+
+.card.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.image-info {
+    text-align: center;
+    margin-top: 40px;
+    transition: all 0.5s ease-out;
+}
+
+.image-name {
+    color: black;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 300px;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.image-name::before,
+.image-name::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 100px;
+    height: 2px;
+    background: rgb(8, 42, 123);
+}
+
+.image-name::before {
+    left: -120px;
+}
+
+.image-name::after {
+    right: -120px;
+}
+
+.image-description {
+    color: #848696;
+    font-size: 1.5rem;
+    font-weight: 100;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 10px 0;
+    margin-top: -15px;
+    position: relative;
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 60px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(8, 42, 123, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: rgb(8, 42, 123);
+    transform: scale(1.2);
+}
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(8, 42, 123, 0.6);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    padding-bottom: 4px;
+}
+
+.nav-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow.left {
+    left: 20px;
+    padding-right: 3px;
+}
+
+.nav-arrow.right {
+    right: 20px;
+    padding-left: 3px;
+}
+
+/* Only apply the styles inside when the screen is 768px wide or smaller
+(typically tablets or phones in portrait mode) */
+@media (max-width: 768px) {
+    .about-title {
+        font-size: 4.5rem;
+    }
+
+    /* Shrinks each carousel card/image to a smaller size on mobile.
+    Helps fit more visible content into a narrower screen. */
+    .card {
+        width: 200px;
+        height: 280px;
+    }
+
+    /* Each .card.left-1, .left-2, .right-1, .right-2 uses transform to move cards left or right, 
+    and scale/shrink them based on how far they are from center. */
+    .card.left-2 {
+        transform: translateX(-250px) scale(0.8) translateZ(-300px);
+    }
+
+    .card.left-1 {
+        transform: translateX(-120px) scale(0.9) translateZ(-100px);
+    }
+
+    .card.right-1 {
+        transform: translateX(120px) scale(0.9) translateZ(-100px);
+    }
+
+    .card.right-2 {
+        transform: translateX(250px) scale(0.8) translateZ(-300px);
+    }
+
+    .image-name {
+        font-size: 2rem;
+    }
+
+    .image-description {
+        font-size: 1.2rem;
+    }
+
+    .image-name::before,
+    .image-name::after {
+        width: 50px;
+    }
+
+    .image-name::before {
+        left: -70px;
+    }
+
+    .image-name::after {
+        right: -70px;
+    }
+}

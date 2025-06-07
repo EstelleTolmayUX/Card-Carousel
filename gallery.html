@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="gallery.css" />
+    <script defer src="script.js"></script>
+    <title>Image Gallery Carousel</title>
+  </head>
+  <body>
+    <h1 class="about-title">Image Gallery Carousel</h1>
+
+    <!-- ================START: Carousel Container================== -->
+    <div class="carousel-container">
+      <!-- Left Arrow Button -->
+      <button class="nav-arrow left">&lsaquo;</button>
+
+      <!--- ============Carousel Track START=======================--->
+      <div class="carousel-track">
+        <!-- .card divs -->
+        <div class="card" data-index="0">
+          <img src="./images/digital_art_1.jpg" alt="Summer Festival" />
+        </div>
+        <!-- .card divs -->
+        <div class="card" data-index="1">
+          <img src="./images/digital_art_2.jpg" alt="Skyward Celebration" />
+        </div>
+        <!-- card divs -->
+        <div class="card" data-index="2">
+          <img src="./images/digital_art_3.jpg" alt="Kites in the Breeze" />
+        </div>
+        <!-- card divs -->
+        <div class="card" data-index="3">
+          <img src="./images/digital_art_4.jpg" alt="Serenity Over the Valley" />
+        </div>
+        <!-- card divs -->
+        <div class="card" data-index="4">
+          <img src="./images/digital_art_5.jpg" alt="Soaring Dreams" />
+        </div>
+      </div>
+      <!--- ==============Carousel Track END======================= --->
+
+      <!-- Right Arrow Button-->
+      <button class="nav-arrow right">&rsaquo;</button>
+    </div>
+    <!-- ===============END: Carousel Container======================-->
+
+    <!-- =================Image Info Display========================= -->
+    <div class="image-info">
+      <h2 class="image-name">placeholder</h2>
+      <p class="image-description">placeholder</p>
+    </div>
+
+    <!-- ==================building the dot navigation for your carousel.==  -->
+    <div class="dots">
+      <div class="dot active" data-index="0"></div>
+      <div class="dot" data-index="1"></div>
+      <div class="dot" data-index="2"></div>
+      <div class="dot" data-index="3"></div>
+      <div class="dot" data-index="4"></div>
+    </div>
+
+    <!-- 🧠 What Each Part Means:
+            <div class="dots">	A container that holds all the dot navigation buttons.
+            <div class="dot">	Each dot represents a slide or card in your carousel (5 total).
+            class="dot active"	This dot is visually highlighted (the current/active slide).
+            data-index="0" to data-index="4"	Each dot is mapped to a specific card index in the carousel 
+            (for JavaScript to use when switching slides).
+
+            🎯 Real-World Use:
+                These dots usually appear underneath the carousel.
+                Users can click on them to go to a specific slide (e.g., dot 3 → show Image Card 4).
+                The active class helps you style the currently visible dot differently (e.g., solid color or bigger). -->
+  </body>
+</html>
