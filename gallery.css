@@ -21,7 +21,7 @@ body {
     overflow: hidden;
     /* overflow:hidden = It hides any content that overflows (goes outside) the boundaries of the <body> element. */
     /* 🧠 Real-World Use in This Context:
-            It’s often used when you want a clean layout with no accidental scrollbars, especially in fullscreen 
+            It’s often used when you want a clean layout with no accidental scroll-bars, especially in fullscreen 
             designs (like hero sections or centered landing pages).
             With display: flex and justify-content: center, you're already centering things vertically, 
             so overflow: hidden; ensures no stray content pushes things out of place or creates unexpected scroll.
@@ -169,7 +169,7 @@ Usually has no transform — it's front and center. */
 
 .card.left-2 img {
     filter: grayscale(100%);
-    /* 	Desaturates the image to reinforce it's not the main focus. */
+    /* 	De-saturates the image to reinforce it's not the main focus. */
 }
 
 /* ========.left-1 (closer to center than left-2)==== */
