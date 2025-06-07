@@ -5,7 +5,7 @@ const imageCollection = [
   { name: "Summer Festival", description: "A lively outdoor festival scene with colorful tents, fluttering flags, and people enjoying a sunny day, captured in a vibrant watercolor style." },
   { name: "Skyward Celebration", description: "A cheerful festival by the sea, featuring hot air balloons floating above a bustling market with colorful tents and festive flags, rendered in a dreamy watercolor palette." },
   { name: "Kites in the Breeze", description: "A joyful moment of children flying colorful kites in an open field, surrounded by a festive crowd and distant tents, painted in a warm, watercolor glow." },
-  { name: "Serenity Over the Valley", description: "A breathtaking watercolor landscape showcasing rolling green hills, snow-capped mountains, and a winding river under a soft, pastel sky with blooming trees in the foreground." },
+  { name: "Sunlit Valley Serenity", description: "Vibrant watercolor of a valley at sunrise/sunset with colorful skies, wildflowers, distant mountains, and a winding river." },
   { name: "Soaring Dreams", description: "A whimsical watercolor scene of a child flying a vibrant kite amidst a festival, with other kites dancing in the sky and a lively crowd in the background." },
 ];
 console.log("create image collection array of objects", imageCollection);
