@@ -44,7 +44,7 @@ body {
     /* Removes the element from the normal document flow and positions it relative to the nearest positioned ancestor. */
     /* Perfect for overlaying text, like a title placed on top of an image, banner, or centered section—independent 
     of surrounding layout. */
-    top: 45px;
+    top: 50px;
     /* What it does:
         Positions the element 45 pixels down from the top of its containing block (usually a parent with position: relative).
         currently in this context = initial containing block (basically the entire page).
@@ -124,9 +124,9 @@ body {
 /* ===========IMAGE-CARD=============== */
 .card {
     position: absolute;
-    margin-top: 200px;
-    width: 680px;
-    height: 780px;
+    margin-top: 400px;
+    width: 780px;
+    height: 880px;
     background: white;
     border-radius: 20px;
     overflow: hidden;
@@ -222,7 +222,7 @@ Usually has no transform — it's front and center. */
     color: black;
     font-size: 2.5rem;
     font-weight: 700;
-    margin-top: 300px;
+    margin-top: 400px;
     margin-bottom: 10px;
     position: relative;
     display: inline-block;
@@ -275,29 +275,39 @@ Usually has no transform — it's front and center. */
 }
 
 .dot.active {
-    background: rgb(8, 42, 123);
+    background: #033d56;
     transform: scale(1.2);
 }
 
 .nav-arrow {
     position: absolute;
-    top: 50%;
+    /* Positions the arrow relative to its nearest positioned parent. */
+    top: 80%;
+    /* Places it 80% down from the top of its container. */
     transform: translateY(-50%);
+    /* Pulls it back up by 50% of its own height — this centers it vertically at the 80% point.
+                                    → Helps align it visually in the vertical space. */
     background: rgba(8, 42, 123, 0.6);
+    /* A semi-transparent dark blue background (60% opacity). */
     color: white;
+    /* arrow color */
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    /* turns it into a perfect circle */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: 20;
-    transition: all 0.3s ease;
+    /* Brings the button above most other elements, avoiding overlap issues. */
+    transition: all 0.2s ease;
     font-size: 1.5rem;
     border: none;
     outline: none;
+    /* Removes default browser borders/outlines — often used for cleaner buttons. */
     padding-bottom: 4px;
+    /* Nudges the icon slightly upward inside the circle — fine-tuning the vertical balance. */
 }
 
 .nav-arrow:hover {
